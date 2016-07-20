@@ -19,5 +19,5 @@ if (!defined ('DS')) {
 }
 
 // central link to the paqure-lamp-backend library
-require_once ((dirname(__DIR__).DS.'paqure-lamp-backend'.DS.'ini.php');
+require_once (dirname(__DIR__).DS.'paqure-lamp-backend'.DS.'ini.php');
 

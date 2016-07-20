@@ -56,7 +56,7 @@ if ($reply['id'] > 0) {
 	$at = AppTable::sharedInstance();
 
 	// attempt to retrieve record
-	if ($rec = $at->fetchRowFromId($id)) {
+	if ($rec = $at->fetchRowFromId($reply['id'])) {
 
 		// check version incrementally from fix to major
 		if (intval($rec['fix']) > intval($reply['fix'])) {

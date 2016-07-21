@@ -34,7 +34,7 @@ $reply = array(
   'fix' => 0,
   'copyright' => 0,
   'company' => '',
-  'update' => 0
+  'update' => '0'
 );
 
 // keys expected to be submitted in POST
@@ -60,19 +60,19 @@ if ($reply['id'] > 0) {
 
 		// check version incrementally from fix to major
 		if (intval($rec['fix']) > intval($reply['fix'])) {
-			$rec['update'] = 1;
+			$rec['update'] = '1';
 		}
 		if (intval($rec['minor']) > intval($reply['minor'])) {
-			$rec['update'] = 1;
+			$rec['update'] = '1';
 		}
 		if (intval($rec['major']) > intval($reply['major'])) {
-			$rec['update'] = 1;
+			$rec['update'] = '1';
 		}
 		
 		// enforce database authority
 		$reply['name'] = $rec['name'];
 		$reply['copyright'] = $rec['copyright'];
-		$reply['company'] = $rec['company'];			
+		$reply['company'] = $rec['company'];
 
 	} else {
 

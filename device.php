@@ -63,7 +63,7 @@ if (strlen($device['identifier']) > 0) {
 
         // label and locale are the only device changeable values
         if ($device['label'] != $row['label'] || $device['locale'] != $row['locale']) {
-            $dt->updateDevice($device['id'],$device['label'],$device['locale']);
+            $device['modified'] = $dt->updateDevice($device['id'],$device['label'],$device['locale']);
             $row = $dt->fetchRowFromIdentifier($device['identifier']);
         }
 

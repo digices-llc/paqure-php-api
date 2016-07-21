@@ -50,8 +50,8 @@ foreach ($keys as $key) {
     }
 }
 
-// make sure we have actually received an id
-if ($device['id'] > 0) {
+// make sure we have actually received an identifier
+if (strlen($device['identifier']) > 0) {
 
     // acquire table singleton
     $dt = DeviceTable::sharedInstance();

@@ -56,21 +56,21 @@ if ($device['id'] > 0) {
     // acquire table singleton
     $dt = DeviceTable::sharedInstance();
 
-// see if the device is recognized
-    if ($row = $dt->fetchRowFromIdentifier($identifier)) {
+    // see if the device is recognized
+    if ($row = $dt->fetchRowFromIdentifier($device['identifier'])) {
         // a device with identifier has been found
 
         // label and locale are the only device changeable values
-        if ($label != $row['label'] || $locale != $row['locale']) {
-            $dt->updateDevice($id,$label,$locale,$token);
-            $row = $dt->fetchRowFromIdentifier($identifier);
+        if ($device['label'] != $row['label'] || $device['locale'] != $row['locale']) {
+            $dt->updateDevice($device['id'],$device['label'],$device['locale']);
+            $row = $dt->fetchRowFromIdentifier($device['identifier']);
         }
 
         $reply['device'] = $row;
 
     } else {
         // no device, create the record
-        $reply['device'] = $dt->newDevice($identifier,$locale);
+        $reply['device'] = $dt->newDevice($device['identifier'],$device['locale']);
 
     }
 

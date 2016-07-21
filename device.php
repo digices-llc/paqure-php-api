@@ -31,6 +31,7 @@ global $reply;
 // initialize device with default values
 $device = array(
     'id' => 0,
+    'label' => '',
     'identifier' => '',
     'locale' => 'en_US',
     'token' => '4c9184f37cff01bcdc32dc486ec36961',
@@ -66,11 +67,11 @@ if (strlen($device['identifier']) > 0) {
             $row = $dt->fetchRowFromIdentifier($device['identifier']);
         }
 
-        $reply['device'] = $row;
+        $device = $row;
 
     } else {
         // no device, create the record
-        $reply['device'] = $dt->newDevice($device['identifier'],$device['locale']);
+        $device = $dt->newDevice($device['identifier'],$device['locale']);
 
     }
 

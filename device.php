@@ -41,7 +41,7 @@ $device = array(
     'update' => '0'
 );
 
-$keys = array('id','identifier','locale','token','created','modified','status','update');
+$keys = array('id','label','identifier','locale','token','created','modified','status','update');
 
 // replace default values with any that have been acquired
 foreach ($keys as $key) {

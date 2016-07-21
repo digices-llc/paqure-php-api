@@ -77,7 +77,7 @@ if ($reply['id'] > 0) {
 	} else {
 
 		// id is not in table... allow passthrough
-		$reply['app'] = $_POST;
+		$reply = $_POST;
 
 	}
 
@@ -86,7 +86,7 @@ if ($reply['id'] > 0) {
 	// @TODO unrecognized parameters, record IP Address to possibly block
 
     // pretend to understand
-	$reply['app'] = $_POST;
+	$reply = $_POST;
 
 }
 

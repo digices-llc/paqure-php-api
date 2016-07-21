@@ -2,7 +2,7 @@
 
 /**
  * device.php
- * url to parse POST request from devicelication
+ * url to parse POST request from device
  *
  * @category   API
  * @package    paqure-php-api
@@ -11,12 +11,6 @@
  * @license    https://github.com/digices-llc/paqure-lamp-backend/blob/master/LICENSE
  * @version    0.0.1
  * @link       https://github.com/digices-llc/paqure-php-api.git
- */
-
-/**
- * Client sends device parameters to this url to
- * (a) register devicelication launch, and
- * (b) to receive update notifications
  */
 
 // link to ini

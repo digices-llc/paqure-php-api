@@ -22,11 +22,14 @@
 // link to ini
 require_once ('ini.php');
 
+// declare app as global
+global $app;
+
 // declare reply as global
 global $reply;
 
-// initialize reply with default values
-$reply = array(
+// initialize app with default values
+$app = array(
   'id' => 0,
   'name' => '',
   'major' => 0,
@@ -45,39 +48,39 @@ $keys = array('id','name','major','minor','fix','copyright','company');
 foreach ($keys as $key) {
 	if (isset($_POST[$key])) {
 	    // assign received value to the return array
-		$reply[$key] = $_POST[$key];
+		$app[$key] = $_POST[$key];
 	}
 }
 
 // make sure we have actually received an id
-if ($reply['id'] > 0) {
+if ($app['id'] > 0) {
 
 	// acquire table singleton
 	$at = AppTable::sharedInstance();
 
 	// attempt to retrieve record
-	if ($rec = $at->fetchRowFromId($reply['id'])) {
+	if ($rec = $at->fetchRowFromId($app['id'])) {
 
 		// check version incrementally from fix to major
-		if (intval($rec['fix']) > intval($reply['fix'])) {
+		if (intval($rec['fix']) > intval($app['fix'])) {
 			$rec['update'] = '1';
 		}
-		if (intval($rec['minor']) > intval($reply['minor'])) {
+		if (intval($rec['minor']) > intval($app['minor'])) {
 			$rec['update'] = '1';
 		}
-		if (intval($rec['major']) > intval($reply['major'])) {
+		if (intval($rec['major']) > intval($app['major'])) {
 			$rec['update'] = '1';
 		}
 		
 		// enforce database authority
-		$reply['name'] = $rec['name'];
-		$reply['copyright'] = $rec['copyright'];
-		$reply['company'] = $rec['company'];
+		$app['name'] = $rec['name'];
+		$app['copyright'] = $rec['copyright'];
+		$app['company'] = $rec['company'];
 
 	} else {
 
 		// id is not in table... allow passthrough
-		$reply = $_POST;
+		$app = $_POST;
 
 	}
 
@@ -86,9 +89,13 @@ if ($reply['id'] > 0) {
 	// @TODO unrecognized parameters, record IP Address to possibly block
 
     // pretend to understand
-	$reply = $_POST;
+	$app = $_POST;
 
 }
+
+$reply = array();
+
+$reply['app'] = $app;
 
 // send the reply
 header('Content-type: application/json');

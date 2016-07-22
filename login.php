@@ -48,7 +48,7 @@ if (isset($_POST['username'])) {
                 // get user table
                 $ut = UserTable::sharedInstance();
                 // query for username
-                if ($row = $ut->fetchRowFromName($username)) {
+                if ($row = $ut->fetchRowFromUsername($username)) {
                     if ($hashed_password == $row['hashed_password']) {
                         // username found
                         $message = 'Success';

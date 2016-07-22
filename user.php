@@ -75,4 +75,8 @@ if ($row = $ut->fetchRowFromUsername($user['username'])) {
 
 }
 
+// send the reply
+header('Content-type: application/json');
+echo json_encode($reply);
+
 

@@ -39,7 +39,6 @@ if (isset($_POST['username'])) {
         if (isset($_POST['password'])) {
 
             if (strlen($_POST['password']) > 0) {
-                require_once(dirname(dirname(dirname(__DIR__))).DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'rolcapital'.DIRECTORY_SEPARATOR.'api'.DIRECTORY_SEPARATOR.'ini.php');
                 // save parameters
                 $username = $_POST['username'];
                 $hashed_password = sha1($_POST['password']);

@@ -17,11 +17,13 @@
 require_once ('ini.php');
 
 global $message;
+global $authenticated;
 global $status;
 
 $message = 'none';
 $source = '1';
 $status = '2';
+$authenticated = '0';
 
 if (isset($_POST['submit'])) {
 
@@ -52,6 +54,7 @@ if (isset($_POST['username'])) {
                     if ($hashed_password == $row['hashed_password']) {
                         // username found
                         $message = 'Success';
+                        $authenticated = '1';
                         // get status of user
                         $status = $row['status'];
                     } else {
@@ -76,6 +79,7 @@ if (isset($_POST['username'])) {
 
 $return['message'] = $message;
 $return['status'] = $status;
+$return['authenticated'] = $authenticated;
 
 header('Content-type: application/json');
 echo json_encode($return);
